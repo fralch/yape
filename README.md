@@ -46,3 +46,8 @@ npx prisma migrate dev --name init
   {
     "transactionExternalId": "Guid"
   }
+
+
+### Ip de Kafka
+Asegúrate cambiar la ip de kafka en consumer y producer service, actualmente esta en `172.17.96.79:9092` 
+pero puedes cambiarlo a `localhost:9092` si es que estas corriendo kafka en tu maquina local.

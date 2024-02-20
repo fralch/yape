@@ -33,11 +33,20 @@ export class ConsumerService {
                 eachMessage: async ({ topic, partition, message,  }) => {
                     try {
                         const mensaje = message.value.toString('utf-8');
-                        this.logger.log(JSON.parse(mensaje));
-                        this.logger.log(`Verificando`);
+                        // this.logger.log(JSON.parse(mensaje));
                         const data_updated = await this.checkTransaction(JSON.parse(mensaje).transaccion_id, JSON.parse(mensaje));
-                        console.log(data_updated);
-
+                        const format_data ={
+                            "transactionExternalId": "Guid",
+                            "transactionType": {
+                                "name": ""
+                            },
+                            "transactionStatus": {
+                                "name":  data_updated.status === 2 ? "approved" : "rejected"
+                            },
+                            "value": data_updated.value,
+                            "createdAt": data_updated.created_at,
+                        }
+                        this.logger.log(format_data);
                        
                     } catch (error) {
                         this.logger.error(`Error al procesar el mensaje: ${error.message}`);
@@ -83,5 +92,13 @@ export class ConsumerService {
                 status: this.status.approved
             });
         }
+    }
+
+    async getTransaccion(transaccion_id: string) {
+        return this.prisma.transaccion.findUnique({
+            where: {
+                transaccion_id: Number(transaccion_id),
+            },
+        });
     }
 }

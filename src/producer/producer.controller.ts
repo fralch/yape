@@ -15,7 +15,7 @@ export class ProducerController {
     async saveTransaction(@Body() transaction: Transaccion) {
         try {
             const datos_enviar = {
-                ...transaction, 
+                ...transaction,
                 "transaccion_external_id": "1234567890",
                 "status": 1,
                 "created_at": new Date(),

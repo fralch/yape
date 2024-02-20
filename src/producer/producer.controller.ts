@@ -16,7 +16,7 @@ export class ProducerController {
         try {
             const datos_enviar = {
                 ...transaction,
-                "transaccion_external_id": "1234567890",
+                "transactionExternalId": 'id_' + Math.random().toString(36).substr(2, 9),
                 "status": 1,
                 "created_at": new Date(),
             }

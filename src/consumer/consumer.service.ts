@@ -36,7 +36,7 @@ export class ConsumerService {
                         // this.logger.log(JSON.parse(mensaje));
                         const data_updated = await this.checkTransaction(JSON.parse(mensaje).transaccion_id, JSON.parse(mensaje));
                         const format_data ={
-                            "transactionExternalId": "Guid",
+                            "transactionExternalId": data_updated.transactionExternalId,
                             "transactionType": {
                                 "name": ""
                             },
@@ -94,10 +94,10 @@ export class ConsumerService {
         }
     }
 
-    async getTransaccion(transaccion_id: string) {
-        return this.prisma.transaccion.findUnique({
+    async getTransaccion(transactionExternalId: string) {
+        return this.prisma.transaccion.findFirst({
             where: {
-                transaccion_id: Number(transaccion_id),
+                transactionExternalId: transactionExternalId,
             },
         });
     }

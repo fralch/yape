@@ -13,8 +13,14 @@ export class ConsumerController {
         console.log(mensaje)
         return mensaje;
     }
-    @Get('transaccion/:transaccion_id')
-    async getTransaccion(@Param('transaccion_id') transaccion_id: string): Promise<Transaccion> {
-        return this.consumerService.getTransaccion(transaccion_id);
+    @Post('transaccion')
+    async getTransaccion(@Body() transaction: any): Promise<Transaccion> {
+        try {
+            const data = await this.consumerService.getTransaccion(transaction.transactionExternalId);
+            return data;
+        } catch (error) {
+            console.error(error);
+            throw new BadRequestException(error);
+        }
     }
 }

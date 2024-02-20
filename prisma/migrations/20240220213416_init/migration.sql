@@ -1,7 +1,7 @@
 -- CreateTable
 CREATE TABLE "Transaccion" (
     "transaccion_id" SERIAL NOT NULL,
-    "transaccion_external_id" TEXT NOT NULL,
+    "transactionExternalId" TEXT NOT NULL,
     "accountExternalIdDebit" TEXT NOT NULL,
     "accountExternalIdCredit" TEXT NOT NULL,
     "tranferTypeId" INTEGER NOT NULL,

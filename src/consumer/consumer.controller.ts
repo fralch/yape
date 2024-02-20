@@ -20,19 +20,14 @@ export class ConsumerController {
             const data_formart: any = {
                 transactionExternalId: data.transactionExternalId,
                 transactionType: {
-                    name: ""
+                    name: data.tranferTypeId === 1 ? "deposit" : "withdraw"
                 },
                 transactionStatus: {
                     name: data.status === 2 ? "approved" : "rejected"
                 },
                 value: data.value,
                 createdAt: data.created_at,
-                transaccion_id: data.transaccion_id,
-                accountExternalIdDebit: data.accountExternalIdDebit,
-                accountExternalIdCredit: data.accountExternalIdCredit,
-                tranferTypeId: data.tranferTypeId,
-                status: data.status,
-                created_at: data.created_at
+           
             }; 
             return data_formart;
         } catch (error) {

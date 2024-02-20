@@ -1,6 +1,15 @@
-# Proyecto con NestJS y Kafka
+# Proyecto con NestJS,  Kafka y Prisma
 
 Este proyecto utiliza NestJS y Kafka para implementar una arquitectura de mensajería asíncrona. Permite realizar transferencias entre cuentas mediante productores y consumidores.
+
+
+## Configuración
+
+Asegúrate de tener instalado Node.js y las dependencias necesarias. Puedes instalarlas ejecutando:
+```bash
+npm install
+npx prisma migrate dev --name init
+```
 
 ## Endpoints
 
@@ -30,5 +39,5 @@ Este proyecto utiliza NestJS y Kafka para implementar una arquitectura de mensaj
 - **Cuerpo de la solicitud:**
   ```json
   {
-    "transactionExternalId": "id_yrsr5nfib"
+    "transactionExternalId": "Guid"
   }

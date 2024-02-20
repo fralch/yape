@@ -7,7 +7,7 @@ Este proyecto utiliza NestJS y Kafka para implementar una arquitectura de mensaj
 ### Enviar Transacción (Productor)
 
 - **Método:** POST
-- **URL:** `172.17.96.79:3333/producer/save_send`
+- **URL:** `localhost:3333/producer/save_send`
 - **Cuerpo de la solicitud:**
   ```json
   {
@@ -15,4 +15,20 @@ Este proyecto utiliza NestJS y Kafka para implementar una arquitectura de mensaj
     "accountExternalIdCredit": "Guid",
     "tranferTypeId": 1,
     "value": 120
+  }
+
+
+### Correr Consumer 
+- **Método:** GET
+- **URL:** `localhost:3333/consumer/`
+
+
+### Recuperar Transacción 
+
+- **Método:** POST
+- **URL:** `localhost:3333/consumer/transaccion`
+- **Cuerpo de la solicitud:**
+  ```json
+  {
+    "transactionExternalId": "id_yrsr5nfib"
   }

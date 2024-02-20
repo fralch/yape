@@ -1,7 +1,12 @@
 # Proyecto con NestJS,  Kafka y Prisma
 
-Este proyecto utiliza NestJS y Kafka para implementar una arquitectura de mensajería asíncrona. Permite realizar transferencias entre cuentas mediante productores y consumidores.
+## Descripción
 
+Este proyecto utiliza NestJS y Kafka para implementar una arquitectura de mensajería asíncrona. Permite 
+realizar transferencias entre cuentas mediante productores y consumidores.
+
+## Autor
+Alexander Frank Cairampoma Castro
 
 ## Configuración
 

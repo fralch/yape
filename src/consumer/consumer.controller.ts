@@ -17,7 +17,24 @@ export class ConsumerController {
     async getTransaccion(@Body() transaction: any): Promise<Transaccion> {
         try {
             const data = await this.consumerService.getTransaccion(transaction.transactionExternalId);
-            return data;
+            const data_formart: any = {
+                transactionExternalId: data.transactionExternalId,
+                transactionType: {
+                    name: ""
+                },
+                transactionStatus: {
+                    name: data.status === 2 ? "approved" : "rejected"
+                },
+                value: data.value,
+                createdAt: data.created_at,
+                transaccion_id: data.transaccion_id,
+                accountExternalIdDebit: data.accountExternalIdDebit,
+                accountExternalIdCredit: data.accountExternalIdCredit,
+                tranferTypeId: data.tranferTypeId,
+                status: data.status,
+                created_at: data.created_at
+            }; 
+            return data_formart;
         } catch (error) {
             console.error(error);
             throw new BadRequestException(error);
